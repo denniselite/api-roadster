@@ -1,6 +1,6 @@
 <?php
 
-Class Model_packs extends Model{
+Class Model_hosts extends Model{
     
     private $STH;
     private $page_size = 20;
@@ -90,9 +90,9 @@ Class Model_packs extends Model{
         $id = array ("id" => $id);
         $this->STH->execute($id);
         $this->STH->setFetchMode(PDO::FETCH_OBJ);
-        $pack_info = $this->STH->fetch();
-        if ($pack_info instanceof stdClass){
-            $this->STH = $this->DBH->prepare("UPDATE packs SET "
+        $host_info = $this->STH->fetch();
+        if ($host_info instanceof stdClass){
+            $this->STH = $this->DBH->prepare("UPDATE hosts SET "
                     . "time = :time, "
                     . "location = :location, "
                     . "price = :price, "

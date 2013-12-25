@@ -1,6 +1,6 @@
 <?php
 
-Class Model_packs extends Model{
+Class Model_routes extends Model{
     
     private $STH;
     private $page_size = 20;
@@ -20,7 +20,7 @@ Class Model_packs extends Model{
         }
         if ($session instanceof stdClass){
             $this->STH = 
-                $this->DBH->prepare("INSERT INTO hosts (uid, time, start, end, price, trip-type, packs-mode, repeat, seats, 3days, reserve_uid) "
+                $this->DBH->prepare("INSERT INTO routes (uid, time, start, end, price, trip-type, packs-mode, repeat, seats, 3days, reserve_uid) "
                     . "VALUES (:uid, :time, :start, :end, :price, :trip-type, :packs-mode, :repeat, :seats, :3days, :reserve_uid)");    
 
             unset($data->sid);

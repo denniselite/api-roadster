@@ -87,18 +87,18 @@ class Controller_packs extends Controller {
         $this->check_data();
         $data = array ('id' => $id);
         if ($this->sid_status){
-            return $this->view->generate('pack',$this->model->get_pack($data));
+            return $this->view->generate('packs',$this->model->get_pack($data));
         } else {
             $this->model->out_error("301");
         }
         
     }
     
-    private function update_profile($id){
+    private function update_pack($id){
         $this->check_data();
         if ($this->sid_status){
             return
-                $this->view->generate('users',$this->model->update_user($id,(object)$this->post_data));
+                $this->view->generate('packs',$this->model->update_pack($id,(object)$this->post_data));
         } else {
             $this->model->out_error("301");
         }

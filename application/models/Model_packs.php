@@ -44,8 +44,8 @@ Class Model_packs extends Model{
         $this->STH = $this->DBH->prepare("SELECT * FROM packs WHERE id = :id");
         $this->STH->execute($data);
         $this->STH->setFetchMode(PDO::FETCH_OBJ);
-        $user_info = $this->STH->fetch();
-        if ($user_info instanceof stdClass){
+        $pack_info = $this->STH->fetch();
+        if ($pack_info instanceof stdClass){
             $this->STH = $this->DBH->prepare("DELETE FROM packs WHERE id = :id");
             $this->STH->execute($data);
             return $this->out_data('200');
@@ -58,9 +58,9 @@ Class Model_packs extends Model{
         $this->STH = $this->DBH->prepare("SELECT * FROM packs WHERE id = :id");
         $this->STH->execute($data);
         $this->STH->setFetchMode(PDO::FETCH_OBJ);
-        $user_info = $this->STH->fetch();
-        if ($user_info instanceof stdClass){
-            return $this->out_data($user_info);
+        $pack_info = $this->STH->fetch();
+        if ($pack_info instanceof stdClass){
+            return $this->out_data($pack_info);
         } else {
             return $this->out_error('401');
         }
