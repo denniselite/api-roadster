@@ -40,6 +40,8 @@ class Controller_routes extends Controller {
                 }
                 if ($this->method == "DELETE"){
                     $this->delete_route($id);
+                } else {
+                    $this->model->out_error("402");
                 }
             }
     }

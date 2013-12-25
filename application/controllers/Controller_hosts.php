@@ -40,6 +40,8 @@ class Controller_hosts extends Controller {
                 }
                 if ($this->method == "DELETE"){
                     $this->delete_host($id);
+                } else {
+                    $this->model->out_error("402");
                 }
             }
     }

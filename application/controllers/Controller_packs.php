@@ -40,6 +40,8 @@ class Controller_packs extends Controller {
                 }
                 if ($this->method == "DELETE"){
                     $this->delete_pack($id);
+                } else {
+                    $this->model->out_error("402");
                 }
             }
     }

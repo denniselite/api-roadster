@@ -40,6 +40,8 @@ class Controller_users extends Controller {
                 }
                 if ($this->method == "DELETE"){
                     $this->delete_user($id);
+                } else {
+                    $this->model->out_error("402");
                 }
             }
     }
