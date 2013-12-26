@@ -24,7 +24,7 @@ Class Model_images extends Model{
                 mkdir($dir);
             }
             if ($data->avatar == "TRUE"){
-                
+                // добавить в базу ключ для аватара
             }
         } else{
                 return $this->out_error('300');
