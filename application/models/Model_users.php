@@ -18,6 +18,16 @@ Class Model_users extends Model{
                     return $this->out_error('300');
         }
         if (!($user_info instanceof stdClass)){
+           // $dir_for_user = (string)md5($data->email);
+//            ob_start();
+//            try {
+//            mkdir("/var/www/roadster.su/users/" . $dir_for_user);
+//            } catch (Exception $ex) {
+//                echo $ex->getMessage();
+//            }
+//            $res = ob_get_clean();
+//            //return $this->out_error($res);
+            //mkdir("/var/www/roadster.su/users/" . $dir_for_user . "/avatar");
             $this->STH = 
                 $this->DBH->prepare("INSERT INTO users (email, pass, firstname, secondname, about, partner, approved, device_token) "
                     . "VALUES (:email, :pass, :firstname, :secondname, :about, :partner, 'TRUE', :device_token)");    

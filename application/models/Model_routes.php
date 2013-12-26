@@ -9,7 +9,7 @@ Class Model_routes extends Model{
                 parent::__construct();
     }
 
-    public function create_routes($data) {
+    public function create_route($data) {
         $this->STH = $this->DBH->prepare("SELECT * FROM sessions WHERE sid = ?");
         $this->STH->execute(array($data->sid));
         $this->STH->setFetchMode(PDO::FETCH_OBJ);
