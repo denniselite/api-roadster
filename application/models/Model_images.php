@@ -27,7 +27,7 @@ Class Model_images extends Model{
                 //$this->STH->execute(array($data->sid));
             }
             if ($data->avatar == "TRUE"){
-                $dir = ("/var/www/roadster.su/users/" . $dir_for_images . "/avatar");
+                $dir = ("/var/www/roadster.su/users/" . $dir_for_images);
                 if (!file_exists($dir)){
                     mkdir($dir);
                 } 
@@ -41,7 +41,7 @@ Class Model_images extends Model{
                     $this->STH = $this->DBH->prepare("INSERT INTO images (uid, image_path, avatar, upload_key) VALUES (:uid, :image_path, '1', :upload_key)");
                     $image = array(
                         'uid' => $session->uid,
-                        'image_path' => 'http://roadster.su/users/' . $dir_for_images . '/avatar/',
+                        'image_path' => 'http://roadster.su/users/' . $dir_for_images . '/',
                         'upload_key' => $upload_key,
                             );
                     $this->STH->execute($image);
@@ -51,7 +51,7 @@ Class Model_images extends Model{
                             . ""
                             . "upload_key = :upload_key WHERE (uid = :uid AND avatar = '1')");
                     $image = array(
-                        'image_path' => 'http://roadster.su/users/' . $dir_for_images . '/avatar/',
+                        'image_path' => 'http://roadster.su/users/' . $dir_for_images . '/',
                         'upload_key' => $upload_key,
                         'uid' => $session->uid
                             );
@@ -137,7 +137,7 @@ Class Model_images extends Model{
         $uri_for_upload = $image_info->uid;
         $uri_for_upload = '/var/www/roadster.su/users/' . $uri_for_upload . '/';
         if ($image_info->avatar == '1'){
-            $uri_for_upload .= "avatar/";
+            //$uri_for_upload .= "avatar/";
             unlink($uri_for_upload . $image_info->image_name . ".jpg");
             unlink($uri_for_upload . $image_info->image_name . "_small.jpg");
         }
