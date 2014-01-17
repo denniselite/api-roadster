@@ -34,10 +34,10 @@ class Controller_users extends Controller {
             } else{
                 if ($this->method == "GET"){
                     $this->get_profile($id);
-                }
+                } else
                 if ($this->method == "PUT"){
                     $this->update_profile($id);
-                }
+                } else
                 if ($this->method == "DELETE"){
                     $this->delete_user($id);
                 } else {

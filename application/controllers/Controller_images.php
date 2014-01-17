@@ -25,16 +25,20 @@ class Controller_images extends Controller {
             if ($id==""){
                 if ($this->method == "GET"){
                     $this->get_images();
-                } else {
+                } else
+                if ($this->method == "POST"){
+                    $this->create_uri_for_upload();
+                }
+                else {
                     $this->model->out_error("402");
                     }
             } else{
                 if ($this->method == "GET"){
                     $this->get_image($id);
-                }
+                } else 
                 if ($this->method == "POST"){
-                    $this->update_image($id);
-                }
+                    $this->upload_image($id);
+                } else
                 if ($this->method == "DELETE"){
                     $this->delete_image($id);
                 } else {
@@ -66,6 +70,7 @@ class Controller_images extends Controller {
     }
     
     private function create_uri_for_upload(){
+        $this->check_data();
         return 
         $this->view->generate('images',$this->model->create_uri_for_upload((object)$this->post_data));
            // $this->view->generate('images', $this->data_method);
@@ -83,8 +88,11 @@ class Controller_images extends Controller {
     }
     
     private function get_image($id){
-        $this->check_data();
-        $data = array ('id' => $id);
+        //$this->check_data();
+        $data = new stdClass();
+        $data->id = $id;
+         return $this->view->generate('images',$this->model->get_image($data));
+//        $data->size = $this->post_data['size'];
         if ($this->sid_status){
             return $this->view->generate('images',$this->model->get_image($data));
         } else {
@@ -94,13 +102,13 @@ class Controller_images extends Controller {
     }
     
     private function upload_image($id){
-        $this->check_data();
-        if ($this->sid_status){
+        //$this->check_data();
+        //if ($this->sid_status){
             return
-                $this->view->generate('images',$this->model->upload_image($id,(object)$this->post_data));
-        } else {
-            $this->model->out_error("301");
-        }
+                $this->view->generate('images',$this->model->upload_image($id));
+//        } else {
+//            $this->model->out_error("301");
+//        }
     }
 }
 
